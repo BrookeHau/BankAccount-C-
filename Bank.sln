@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank", "Bank\Bank.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankTests]", "BankTests]\BankTests].csproj", "{D4ADCF01-4CFF-4A46-B2ED-32536BBF6D8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATMApplication", "ConsoleApp1\ATMApplication.csproj", "{45F84141-A899-44A7-A00D-37E7B5D212A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATM_Application", "ConsoleApp2\ATM_Application.csproj", "{04B975BA-8363-4570-9650-16297D40BDC7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{D4ADCF01-4CFF-4A46-B2ED-32536BBF6D8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4ADCF01-4CFF-4A46-B2ED-32536BBF6D8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4ADCF01-4CFF-4A46-B2ED-32536BBF6D8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45F84141-A899-44A7-A00D-37E7B5D212A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45F84141-A899-44A7-A00D-37E7B5D212A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45F84141-A899-44A7-A00D-37E7B5D212A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45F84141-A899-44A7-A00D-37E7B5D212A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04B975BA-8363-4570-9650-16297D40BDC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04B975BA-8363-4570-9650-16297D40BDC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04B975BA-8363-4570-9650-16297D40BDC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04B975BA-8363-4570-9650-16297D40BDC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

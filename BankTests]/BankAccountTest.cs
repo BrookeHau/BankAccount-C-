@@ -7,34 +7,11 @@ namespace BankTests_
     [TestClass]
     public class BankAccountTest
     {
-                
-       [TestMethod]
-        public void DeterminePasswordIsLongEnough()
+
+       
+        [TestMethod]
+        public void DepositAndGetAcctBalance()
         {
-            Password password = new Password("12as12de!");
-            BankClass bankacct = new BankClass();
-            String actual = bankacct.EnterPassword(password);
-            Assert.AreEqual("password is okay", actual);
-        }
-
-        [TestMethod]
-        public void PasswordNotLongEnough()
-        {
-            Password password = new Password("123");
-            BankClass bankacct = new BankClass();
-            String actual = bankacct.EnterPassword(password);
-            Assert.AreEqual("password is too short", actual);
-        }
-
-        [TestMethod]
-        public void GetLength() {
-            Password password = new Password("1234");
-            double length = password.GetLength();
-            Assert.AreEqual(4, length);
-        }
-
-        [TestMethod]
-        public void DepositAndGetAcctBalance() {
             BankClass acct = new BankClass();
             acct.DepositMoney(5);
             double bal = acct.GetBalance();
@@ -42,12 +19,43 @@ namespace BankTests_
         }
 
         [TestMethod]
-        public void WithdrawAndGetAcctBal() {
+        public void WithdrawAndGetAcctBal()
+        {
             BankClass acct = new BankClass();
+            acct.DepositMoney(5);
             acct.WithdrawalMoney(5);
             double bal = acct.GetBalance();
-            Assert.AreEqual(-5, bal);
+            Assert.AreEqual(0, bal);
         }
 
-       }
+        [TestMethod]
+        public void OverDraftFeeTest()
+        {
+            BankClass acct = new BankClass();
+            acct.WithdrawalMoney(7);
+            double bal = acct.GetBalance();
+            Assert.AreEqual(-12, bal);
+        }
+
+        [TestMethod]
+        public void TestDepositAndWithdrawlForOverDraft()
+        {
+            BankClass acct = new BankClass();
+            acct.DepositMoney(1);
+            acct.WithdrawalMoney(2);
+            double bal = acct.GetBalance();
+            Assert.AreEqual(-6, bal);
+        }
+
+        [TestMethod]
+        public void TestDepositAndWithdrawlRegular()
+        {
+            BankClass acct = new BankClass();
+            acct.DepositMoney(13);
+            acct.WithdrawalMoney(2);
+            double bal = acct.GetBalance();
+            Assert.AreEqual(11, bal);
+        }
+
+    }
 }

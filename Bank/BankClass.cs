@@ -4,30 +4,34 @@ namespace Bank
 {
     public class BankClass
     {
-        private double balance;
+        private double balance = 0;
+        private double overdraftfee = 5;
+        private String BankAcctPassword = "1234";
 
-        public string EnterPassword(Password password)
-        {
-            if (password.GetLength() < 8)
-            {
-                return "password is too short";
-            }
-            return "password is okay";
+        public String GetPassword() {
+            return BankAcctPassword;
         }
-
+       
         public void DepositMoney(int depositamount)
         {
             balance += depositamount;
         }
 
+
+        public void WithdrawalMoney(double withdrawalamount)
+        {
+            if (withdrawalamount > balance)
+            {
+                balance -= (withdrawalamount + overdraftfee);
+            }
+            else
+            {
+                balance -= withdrawalamount;
+            }
+        }
         public double GetBalance()
         {
-            return balance;
-        }
-
-        public void WithdrawalMoney(int withdrawalamount)
-        {
-            balance -= withdrawalamount;
+           return balance;
         }
     }
 }
