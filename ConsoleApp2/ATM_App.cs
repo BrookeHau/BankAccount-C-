@@ -19,7 +19,11 @@ namespace ConsoleApp2
                 
                 if (!(password.Equals(account.GetPassword())))
                 {
-                    Console.WriteLine("Wrong password, try again.");
+                    if (loginAttempts == 2) {
+                        Console.WriteLine("Login Failed");
+                        break;
+                    }
+                    Console.WriteLine("Wrong password, try again. You have " + (maxAttemptsAllowed-1-loginAttempts) + " left");
                     loginAttempts++;
 
                 }
@@ -30,11 +34,13 @@ namespace ConsoleApp2
                 }
                 
             }
-            if (loginAttempts > 2) {
+            if (loginAttempts >= 2) {
                 Console.WriteLine("login Failed");
                 System.Environment.Exit(0);
                
             }
+
+            Start:
             Console.WriteLine("Would you like to: 1) Withdrawal 2) Deposit, or 3) Get your Balance");
             String inputRequest = Console.ReadLine();
 
@@ -43,10 +49,26 @@ namespace ConsoleApp2
                 Console.WriteLine("How much would you like to withdrawal?");
                 double withdrawalAmount = Convert.ToInt32(Console.ReadLine());
                 account.WithdrawalMoney(withdrawalAmount);
+                Console.WriteLine("After withdrawing $"+ withdrawalAmount + ", your balance is " + account.GetBalance());
 
             }
 
-            Console.WriteLine(account.GetBalance());
+            if (inputRequest.Equals("2")) {
+                Console.WriteLine("How much would you like to deposit?");
+                double depositAmount = Convert.ToInt32(Console.ReadLine());
+                account.DepositMoney(depositAmount);
+                Console.WriteLine("After depositing $" + depositAmount + ", your balance is " + account.GetBalance());
+            }
+
+            if (inputRequest.Equals("3")) {
+                Console.WriteLine("Your balance is " + account.GetBalance());
+            }
+            Console.WriteLine("Thank you, would you like to do anything else: Y or N");
+            string inputrequest2 = Console.ReadLine();
+            if (inputrequest2.Equals("Y")) {
+                goto Start;
+            }
+            
 
         }
     }

@@ -4,7 +4,7 @@ namespace Bank
 {
     public class BankClass
     {
-        private double balance = 0;
+        private double balance = 150;
         private double overdraftfee = 5;
         private String BankAcctPassword = "1234";
 
@@ -12,7 +12,7 @@ namespace Bank
             return BankAcctPassword;
         }
        
-        public void DepositMoney(int depositamount)
+        public void DepositMoney(double depositamount)
         {
             balance += depositamount;
         }
