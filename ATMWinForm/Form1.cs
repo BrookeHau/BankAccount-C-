@@ -15,6 +15,7 @@ namespace ATMWinForm
         public Form1()
         {
             InitializeComponent();
+            showInitialBalanceText.Text = bank.GetBalance().ToString();
         }
         Bank.BankClass bank = new Bank.BankClass();
 
@@ -24,21 +25,30 @@ namespace ATMWinForm
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            label1.Text = bank.GetBalance().ToString();
+            if (!string.IsNullOrEmpty(withdrawalTextBox.Text)){
+                string withdrawalText = this.withdrawalTextBox.Text;
+                double withdrawalnum = System.Convert.ToInt32(withdrawalText);
+                bank.WithdrawalMoney(withdrawalnum);
+            }
+            if (!string.IsNullOrEmpty(depositTextBox.Text))
+            {
+                string depositText = this.depositTextBox.Text;
+                double depositnum = System.Convert.ToInt32(depositText);
+                bank.DepositMoney(depositnum);
+            }
+            showBalanceLabel.Text = bank.GetBalance().ToString();
             
         }
 
         private void textBox1_TextChanged(object sender, EventArgs text)
-        {            
+        {
             
 
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            decimal value = this.numericUpDown1.Value;
-            double withdrawalEntered = Convert.ToDouble(value);
-            bank.WithdrawalMoney(withdrawalEntered);
+           
         }
     }
 }
